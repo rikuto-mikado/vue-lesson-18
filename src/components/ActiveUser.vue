@@ -1,10 +1,22 @@
 <template>
   <section>
-    <h2>Rikuto Mikado</h2>
-    <h3>18 Years</h3>
+    <h2>{{ username }}</h2>
+    <h3>{{ userage }} Years</h3>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  // Props received from parent component to display user info
+  props: {
+    username: {
+      type: String,
+      required: true
+    },
+    userage: {
+      type: Number,
+      required: true
+    }
+  }
+};
 </script>
