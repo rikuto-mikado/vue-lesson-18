@@ -3,7 +3,8 @@
     <!-- Pass user data as props to ActiveUser component -->
     <!-- ":" is shorthand for "v-bind:" -->
     <active-user :username="user.name" :userage="user.age"></active-user>
-    <user-data></user-data>
+    <!-- "@" is shorthand for "v-on:" (listens for custom events from child) -->
+    <user-data @set-data="setUserData"></user-data>
   </div>
 </template>
 
@@ -17,7 +18,16 @@ export default {
       }
     };
   },
-
+  methods: {
+    // Updates the user object with new name and age values
+    setUserData(data) {
+      this.user = {
+        name: data.name,
+        // "+": converts string to number (alternatives: Number(data.age), parseInt(data.age, 10))
+        age: +data.age
+      }
+    }
+  }
 };
 </script>
 
